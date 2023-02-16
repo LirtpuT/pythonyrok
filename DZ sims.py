@@ -1,6 +1,6 @@
 import random
 class Human:
-    def init(self, name="Human", job=None, home=None, car=None, pet=None):
+    def __init__(self, name="Human", job=None, home=None, car=None):
         self.name = name
         self.money = 100
         self.gladness = 50
@@ -15,6 +15,7 @@ class Human:
     def get_car(self):
         self.car = Auto(brands_of_car)
 
+
     def get_job(self):
         if self.car.drive():
             pass
@@ -24,7 +25,7 @@ class Human:
         self.job = Job(job_list)
 
     def eat(self):
-        if self.home.food <= 0:
+        if self.home.food <=0:
             self.shopping("food")
         else:
             if self.satiety >= 100:
@@ -133,21 +134,91 @@ class Human:
                 print("I want to chill, but there is so much mess…")
                 print("So I will clean the house")
                 self.clean_home()
-        else:
-            print("Let`s chill!")
-            self.chill()
+            else:
+                print("Let`s chill!")
+                self.chill()
         elif self.money < 0:
             print("Start working")
             self.work()
+        elif self.car.strength < 15:
+            print("I need to repair my car")
+            self.to_repair()
+        elif dice == 1:
+            print("Let`s chill!")
+            self.chill()
+        elif dice == 2:
+            print("Start working")
+            self.work()
+        elif dice == 3:
+            print("Cleaning time!")
+            self.clean_home()
+        elif dice == 4:
+            print("Time for treats!")
+            self.shopping(manage="delicacies")
 
-class Animal:
-    def is_animal(self):
-        if self.gladness < 0:
-            print("Depression…")
+brands_of_car = {
+    "BMW":{"fuel":100, "strength":100, "consumption": 6},
+    "Lada":{"fuel":50, "strength":40, "consumption": 10},
+    "Volvo":{"fuel":70, "strength":150, "consumption": 8},
+    "Ferrari":{"fuel":80, "strength":120, "consumption": 14} }
+
+
+class Auto:
+    def __init__(self, brand_list):
+        self.brand=random.choice(list (brand_list))
+        self.fuel=brand_list[self.brand]["fuel"]
+        self.strength = brand_list[self.brand]["strength"]
+        self.consumption=brand_list[self.brand]["consumption"]
+
+    def drive(self):
+        if self.strength > 0 and self.fuel >= self.consumption:
+            self.fuel -= self.consumption
+            self.strength -= 1
+            return True
+        else:
+            print("The car cannot move")
             return False
-        if self.satiety < 0:
-            print("Dead…")
-            return False
-        if self.money < -500:
-            print("Bankrupt…")
-            return False
+
+class House:
+    def __init__(self):
+        self.mess = 0
+        self.food = 0
+
+job_list = {
+ "Java developer":
+                {"salary":50, "gladness_less": 10 },
+ "Python developer":
+                {"salary":40, "gladness_less": 3 },
+ "C++ developer":
+                {"salary":45, "gladness_less": 25 },
+ "Rust developer":
+                {"salary":70, "gladness_less": 1 },
+ }
+
+
+class Job:
+    def __init__(self, job_list):
+        self.job=random.choice(list(job_list))
+        self.salary=job_list[self.job]["salary"]
+        self.gladness_less=job_list[self.job]["gladness_less"]
+
+nick = Human(name="Nick")
+for day in range(1,800):
+    if nick.live(day) == False:
+        break
+
+
+brands_of_pet = {
+    "Maine Coon":{"energy":30, "fatigue":15, "strength": 35 },
+    "Barsik":{"energy":20, "fatigue":10, "strength": 25 },
+    "Britain cat":{"energy":15, "fatigue":10, "strength": 20 },
+}
+
+
+class Pet:
+    def __init__(self, pet_list):
+        self.brand=random.choice(list (pet_list))
+        self.fuel=pet_list[self.brand]["energy"]
+        self.strength=pet_list[self.brand]["fatigue"]
+        self.consumption=pet_list[self.brand]["strength"]
+
