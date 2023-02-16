@@ -139,3 +139,15 @@ class Human:
         elif self.money < 0:
             print("Start working")
             self.work()
+
+class Animal:
+    def is_animal(self):
+        if self.gladness < 0:
+            print("Depression…")
+            return False
+        if self.satiety < 0:
+            print("Dead…")
+            return False
+        if self.money < -500:
+            print("Bankrupt…")
+            return False
