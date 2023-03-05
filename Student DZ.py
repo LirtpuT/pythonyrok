@@ -35,7 +35,7 @@ class Student:
             self.to_sleep()
         elif live_cube == 2:
             self.to_chill()
-            self.to_shopping
+            self.to_shopping()
         elif live_cube == 3:
             self.to_work()
         self.end_of_day()
