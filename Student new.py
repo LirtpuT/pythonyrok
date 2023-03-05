@@ -1,10 +1,10 @@
+import random
 import logging
 logging.basicConfig(level=logging.DEBUG,
                      filename="logs.log", filemode="w",
                      format="We have next logging massage: "
                      "%(asctime)s:%(levelname)s-%(message)s"
                      )
-import random
 class Student:
     def __init__(self, name):
         self.name = name
