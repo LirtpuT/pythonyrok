@@ -1,16 +1,52 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+import random
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+# # def adder(*args, **kwargs):
+# #     result = 0
+# #     for _ in args:
+# #         result += _
+# #     for _ in kwargs.values():
+# #         result += _
+# #     return result
+#
+# def adder(*args, **kwargs):
+#     result = 0
+#     for _ in args:
+#         if type(_) == int or type(_) == bool or type(_) == float:
+#             result += _
+#         else:
+#             try:
+#                 result += float(_)
+#                 continue
+#             except (ValueError, TypeError):
+#                 pass
+#             try:
+#                 result += int(_)
+#                 continue
+#             except (ValueError, TypeError):
+#                 pass
+#     for _ in kwargs.values():
+#         if type(_) == int or type(_) == bool or type(_) == float:
+#             result += _
+#         else:
+#             try:
+#                 result += float(_)
+#                 continue
+#             except (ValueError, TypeError):
+#                 pass
+#             try:
+#                 result += int(_)
+#                 continue
+#             except (ValueError, TypeError):
+#                 pass
+#     return result
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+def adder(*args, **kwargs):
+    result = 0
+    for _ in args:
+        result += _
+    for _ in kwargs.values():
+        result += _
+    return result
